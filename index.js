@@ -4,7 +4,7 @@ var app = express()
 var bodyParser = require('body-parser')
 
 const googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyAXwPymFuk0Ud8xkGuQlGIBRcNjb2IALas',
+    key: process.env.GOOGLE_MAPS_API_KEY,
     Promise: Promise
   });
 
@@ -70,4 +70,3 @@ async function getDirections(res, origin, destination, waypoints=[]) {
 }
 const PORT = process.env.PORT || 3000;
 app.listen(PORT);
-
