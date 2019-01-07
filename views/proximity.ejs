@@ -1,0 +1,10 @@
+
+<p>Point 1: <%= origin %></p>
+<p>Point 2: <%= destination %></p>
+<% if (locals.message) { %>
+    <p><%= message %></p>
+<% } else { %>
+    <p>Total Distance: <%= totalDistance / 1000 %>km</p>
+    <p>Total Duration in current traffic: <%= totalDuration / 60 %> mins</p>
+    
+<% } %>

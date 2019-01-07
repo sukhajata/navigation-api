@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        input {
+            width: 400px;
+            height: 25px;
+            margin: 10px;
+        }
+        button {
+            height: 25px;
+        }
+    </style>
+    <script>
+        function getDirections() {
+            const origin = $('#origin').val();
+            const destination = $('#destination').val();
+            const url = 'directions';//origin/' + encodeURIComponent(origin) + '/destination/' + encodeURIComponent(destination);
+            
+            $.ajax(url, function(response) {
+                console.log(response);
+                    $('#content').html(respose);
+                }
+            );
+        }
+    </script>
+</head>
+<body>
+    <h3>Section 1</h3>
+    <form action="directions" method="POST">
+        <label>Origin:</label>
+        <input type="text" id="origin" name="origin" value="Smales Farm, 72 Taharoto Rd, Takapuna, Auckland 0622" /><br/>
+        <label>Destination:</label>
+        <input type="text" id="destination" name="destination" value="1 Rising Parade, Northcross, Auckland 0632"/><br/>
+        <input type="submit" value="Send"/>
+    </form>
+    <h3>Sections 2 and 3 - Check whether a waypoint is a significant detour</h3>
+    <form action="waypoint" method="POST">
+        <label>Origin:</label>
+        <input type="text" id="origin" name="origin" value="Smales Farm, 72 Taharoto Rd, Takapuna, Auckland 0622" /><br/>
+        <label>Waypoint:</label>
+        <input type="text" id="waypoint" name="waypoint" value="Atlas Concrete Ltd, 11 Wairau Rd, Milford, Auckland 0627"/><br/>
+        <label>Destination:</label>
+        <input type="text" id="destination" name="destination" value="1 Rising Parade, Northcross, Auckland 0632"/><br/>
+        <input type="submit" value="Send"/>
+    </form>
+    <h3>Section 4 - Check the distance between two points</h3>
+    <form action="proximity" method="POST">
+        <label>Origin:</label>
+        <input type="text" id="origin" name="origin" value="Smales Farm, 72 Taharoto Rd, Takapuna, Auckland 0622" /><br/>
+        <label>Destination:</label>
+        <input type="text" id="destination" name="destination" value="42 Taharoto Rd, Takapuna, Auckland 0622"/><br/>
+        <input type="submit" value="Send"/>
+    </form>
+</body>

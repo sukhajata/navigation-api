@@ -1,0 +1,29 @@
+
+<p>Origin: <%= origin %></p>
+<p>Destination: <%= destination %></p>
+<% if (locals.waypoints) { %>
+    <p>Waypoint: <%= waypoints %></p>
+<% } %>
+<% if (locals.message) { %>
+    <p><%= message %></p>
+<% } else { %>
+    <p>Total Distance: <%= totalDistance / 1000 %>km</p>
+    <p>Total Duration: <%= totalDuration / 60 %> mins</p>
+    <% if (locals.distanceAdded) { %>
+    <p>Distance added by waypoint: <%= distanceAdded %>km</p>
+    <% } %>
+    <table cellpadding="10">
+        <tbody>
+            <%  for (var i = 0; i < legs.length; i++) { 
+                    for (var k = 0; k < legs[i].steps.length; k++) { 
+                        const item = legs[i].steps[k]; %>
+            <tr>
+                <td><%= item.html_instructions.replace('&lt;', '<').replace('&gt;', '>'); %></td>
+                <td><%= item.distance.text %></td>
+                <td><%- item.duration.text %></td>
+            </tr>
+                <% }
+            } %>
+        </tbody>
+    </table>
+<% } %>
