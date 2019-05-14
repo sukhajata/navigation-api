@@ -1,10 +1,22 @@
 
-<p>Point 1: <%= origin %></p>
-<p>Point 2: <%= destination %></p>
 <% if (locals.message) { %>
     <p><%= message %></p>
 <% } else { %>
-    <p>Total Distance: <%= totalDistance / 1000 %>km</p>
-    <p>Total Duration in current traffic: <%= totalDuration / 60 %> mins</p>
+    <p>Origins: 
+        <ul>
+            <% for (var i = 0; i < origins.length; i++) { %>
+                <li><%= origins[i] %></li>
+            <% } %>
+        </ul>
+    </p>
+    <p>Destinations: 
+        <ul>
+            <% for (var i = 0; i < destinations.length; i++) { %>
+                <li><%= destinations[i] %></li>
+            <% } %>
+        </ul>
+    </p>
+    <p>Distance: <%= distance %></p>
+    <p>Duration in current traffic: <%= durationInTraffic %> </p>
     
 <% } %>
